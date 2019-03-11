@@ -25,7 +25,7 @@ export const getSmurfs = () => dispatch => {
   axios
       .get('http://localhost:3333/smurfs')
       .then(response => {
-          console.log(response.data)
+          // console.log(response.data)
           dispatch({
               type: GET_SMURF_SUCCESS,
               payload: response.data,

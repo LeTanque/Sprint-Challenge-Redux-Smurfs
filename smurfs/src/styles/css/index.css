@@ -419,11 +419,11 @@ button:active::after {
   transition-duration: 0.5s;
 }
 a {
-  color: #3d92e0;
+  color: #ffffff;
   text-decoration: none;
 }
 a:hover {
-  color: #1f4970;
+  color: #808080;
   transition-duration: 0.5s;
 }
 .font-title {
@@ -465,9 +465,14 @@ body {
   padding: 10px;
   font-size: 2rem;
   display: flex;
+  justify-content: space-between;
 }
-.App .smurf-list {
-  margin-top: 50px;
+.App header .nav-icons {
+  font-size: 1.4rem;
+}
+.App header .nav-icons svg {
+  font-size: 2.4rem;
+  vertical-align: middle;
 }
 .App-header {
   background-color: #232323;
@@ -480,4 +485,46 @@ body {
 }
 .App-intro {
   font-size: large;
+}
+.smurf-list {
+  margin-top: 50px;
+}
+.smurf-list li {
+  width: 50%;
+  max-width: 400px;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 10px;
+  margin: 10px auto;
+  background-color: #38c46d;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+.smurf-list li .smurf-name {
+  margin-top: 10px;
+}
+.smurf-list li .smurf-options {
+  margin-top: 10px;
+  font-size: 2.6rem;
+}
+.smurf-list li .smurf-options .update-smurf {
+  color: #999999;
+  opacity: 0.5;
+}
+.smurf-list li .smurf-options .update-smurf:hover {
+  opacity: 1;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+.smurf-list li .smurf-options .remove-smurf {
+  color: #dd1111;
+  opacity: 0.5;
+}
+.smurf-list li .smurf-options .remove-smurf:hover {
+  opacity: 1;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  transition-duration: 0.5s;
 }

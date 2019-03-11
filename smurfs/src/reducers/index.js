@@ -26,8 +26,8 @@ const rootReducer = (state=initialState, action) => {
       case GET_SMURF_SUCCESS:
         return {
           ...state,
-          fetchingSmurfs: false,
           smurfs: action.payload,
+          fetchingSmurfs: false,
           error: null,
         } 
       case GET_SMURF_FAILURE:
