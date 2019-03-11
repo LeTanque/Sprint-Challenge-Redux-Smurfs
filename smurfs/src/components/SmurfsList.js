@@ -5,26 +5,21 @@ import { connect } from 'react-redux';
 import { removeSmurf } from '../actions';
 
 
-
-
 class SmurfsList extends React.Component {
 
-
-
-    removeSmurf = (smurfName) => {
-        this.props.removeSmurf(smurfName);
+    removeSmurf = (smurf) => {
+        this.props.removeSmurf(smurf);
     }
 
-
     render () {
-        console.log('SmurfList props:   ', this.props)
+        // console.log('SmurfList props:   ', this.props)
         return (
             <Fragment>
                 <section className="smurf-list">
                     <ul>
                         {this.props.smurfs.map(smurf => (
 
-                            <Fragment key={smurf.name + Math.random()} >
+                            <Fragment key={smurf.id} >
 
                                 <li>
                                     <div className='smurf-name'>
@@ -38,7 +33,7 @@ class SmurfsList extends React.Component {
                                     <div className='smurf-options'>
                                     
                                         <span className='remove-smurf'>
-                                            <IoIosRemoveCircle onClick={()=>this.removeSmurf(smurf.name)}/>    
+                                            <IoIosRemoveCircle onClick={()=>this.removeSmurf(smurf.id)}/>    
                                         </span>
 
                                         <span className='update-smurf'>

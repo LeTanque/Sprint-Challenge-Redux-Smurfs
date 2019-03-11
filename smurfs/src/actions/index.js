@@ -9,8 +9,10 @@ export const GET_SMURF_SUCCESS = 'GET_SMURF_SUCCESS';
 export const GET_SMURF_FAILURE = 'GET_SMURF_FAILURE';
 
 export const REMOVE_SMURF = 'REMOVE_SMURF';
-export const ADD_SMURF = 'ADD_SMURF';
+export const REMOVE_SMURF_FAIL = 'REMOVE_SMURF_FAIL';
 
+export const ADD_SMURF = 'ADD_SMURF';
+export const ADD_SMURF_FAIL = 'ADD_SMURF_FAIL';
 
 /*    Be sure to include action types for each type of action creator. Also, be sure to mind
       the "pending" states like, fetching, creating, updating and deleting.
@@ -19,7 +21,6 @@ export const ADD_SMURF = 'ADD_SMURF';
       U - updateSmurf
       D - deleteSmurf
 */
-
 
 export const getSmurfs = () => dispatch => {
   dispatch({
@@ -43,17 +44,59 @@ export const getSmurfs = () => dispatch => {
 }
 
 
-export const removeSmurf = (smurfName) => {
-  return {
-      type: REMOVE_SMURF,
-      payload: smurfName
-  }
+
+export const removeSmurf = (id) => dispatch => {
+  axios
+    .delete('http://localhost:3333/smurfs/', id)
+    .then(response => {
+      dispatch({
+        type: REMOVE_SMURF,
+        payload: response.data,
+      })
+    })
+    .catch(error => {
+      dispatch({
+        type: REMOVE_SMURF_FAIL,
+        payload: error.message, 
+        id
+      })
+    });
 }
 
 
-export const addSmurf = (smurfObject) => {
-  return {
-      type: ADD_SMURF,
-      payload: smurfObject
-  }
+export const addSmurf = (smurfObject) => dispatch => {
+  axios
+    .post('http://localhost:3333/smurfs/', smurfObject)
+    .then(response => {
+      dispatch({
+        type:ADD_SMURF,
+        payload:response.data
+      })
+    })
+    .catch(error=>{
+      dispatch({
+        type:ADD_SMURF_FAIL,
+        payload:error.message
+      })
+    })
 }
+
+
+
+
+
+
+// export const removeSmurf = (smurfName) => {
+//   return {
+//       type: REMOVE_SMURF,
+//       payload: smurfName
+//   }
+// }
+
+
+// export const addSmurf = (smurfObject) => {
+//   return {
+//       type: ADD_SMURF,
+//       payload: smurfObject
+//   }
+// }

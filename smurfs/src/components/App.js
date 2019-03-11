@@ -33,8 +33,8 @@ class App extends Component {
 
   render() {
     
-    console.log('App props:   ', this.props)
-    console.log('App state:   ', this.state)
+    // console.log('App props:   ', this.props)
+    // console.log('App state:   ', this.state)
 
     if (this.props.fetching) {
       return (
@@ -107,9 +107,6 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   ...state
-  // smurfs: state.smurfs,
-  // fetchingSmurfs: state.fetchingSmurfs,
-  // error: state.error
 })
 
 

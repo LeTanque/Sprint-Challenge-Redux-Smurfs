@@ -10,17 +10,18 @@ class SmurfForm extends Component {
         this.state = {
             name:'',
             age:'',
-            height:''
+            height:'',
+            id:''
         }
     }
   
 
   addSmurf = (event) => {
-    event.preventDefault();
     this.setState({
       name: '',
       age: '',
-      height: ''
+      height: '',
+      id:''
     });
     this.props.addSmurf(this.state)
   }
@@ -34,10 +35,9 @@ class SmurfForm extends Component {
     this.setState({ [event.target.name]: value });
   };
 
-
   render() {
-      console.log('This state smurfform:  ', this.state)
-      console.log('This props smurfform:  ', this.props)
+    //   console.log('This state smurfform:  ', this.state)
+    //   console.log('This props smurfform:  ', this.props)
     return (
       <div className="SmurfForm">
 
@@ -70,20 +70,11 @@ class SmurfForm extends Component {
   }
 }
 
-
 const mapStateToProps = state => ({
-    smurfs: state.smurfs,
-    fetchingSmurfs: state.fetchingSmurfs,
-    addingSmurf: state.addingSmurf,
-    updatingSmurf: state.updatingSmurf,
-    deletingSmurf: state.deletingSmurf,
-    error: state.error
+    ...state
 })
-  
   
 export default connect(
     mapStateToProps, 
     { addSmurf }
 )(SmurfForm);
-  
-// export default SmurfForm

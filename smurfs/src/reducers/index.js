@@ -3,7 +3,9 @@ import {
   GET_SMURF_SUCCESS,
   GET_SMURF_FAILURE,
   REMOVE_SMURF,
+  REMOVE_SMURF_FAIL,
   ADD_SMURF,
+  ADD_SMURF_FAIL,
 } from '../actions';
 // Be sure to import in all of the action types from `../actions`
 // Reducers specify how the application's state changes in response to actions sent to the store.
@@ -16,6 +18,8 @@ const initialState = {
   deletingSmurf: false,
   error: null
 }
+
+
 
 const rootReducer = (state=initialState, action) => {
   switch (action.type) {
@@ -41,18 +45,36 @@ const rootReducer = (state=initialState, action) => {
 
       case REMOVE_SMURF: // This reducer creates a new array with the correct filtered from payload tasks
         const newSmurfArr = state.smurfs.filter(smurf => {
-          return smurf.name !== action.payload
+          return smurf !== action.payload
         })
         return {
           ...state,
-          smurfs: newSmurfArr     
+          smurfs: newSmurfArr,
+          error: null
+        }
+
+    
+      case REMOVE_SMURF_FAIL:
+        return {
+          ...state,
+          error: action.payload
         }
 
       case ADD_SMURF:
-        const addSmurfArr = state.smurfs.concat(action.payload)
+        const newSmurf = { 
+          ...action.payload
+        }
+        const addSmurfArr = state.smurfs.concat(newSmurf)
+        return {
+          // ...state,
+          smurfs: addSmurfArr,
+          error: null
+        }
+      
+      case ADD_SMURF_FAIL:
         return {
           ...state,
-          smurfs: addSmurfArr
+          error: action.payload
         }
 
       default:
