@@ -17,6 +17,11 @@ let smurfs = [
     name: 'Brainey',
     age: 200,
     height: '5cm'
+  },
+  {
+    name: 'Smurfette',
+    age: 143,
+    height: '4cm'
   }
 ];
 server.get('/smurfs', (req, res) => {
