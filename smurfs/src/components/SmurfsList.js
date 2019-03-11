@@ -25,16 +25,26 @@ class SmurfsList extends React.Component {
                         {this.props.smurfs.map(smurf => (
 
                             <Fragment key={smurf.name + Math.random()} >
+
                                 <li>
                                     <div className='smurf-name'>
                                         {smurf.name}
+                                        <br></br>
+                                        {smurf.age}
+                                        <br></br>
+                                        {smurf.height}
                                     </div>
+
                                     <div className='smurf-options'>
                                     
                                         <span className='remove-smurf'>
                                             <IoIosRemoveCircle onClick={()=>this.removeSmurf(smurf.name)}/>    
                                         </span>
-                                        <span className='update-smurf'><IoIosBuild /></span>
+
+                                        <span className='update-smurf'>
+                                            <IoIosBuild />
+                                        </span>
+
                                     </div>
                                 </li>
                                 

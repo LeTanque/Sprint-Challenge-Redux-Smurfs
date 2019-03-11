@@ -9,6 +9,7 @@ export const GET_SMURF_SUCCESS = 'GET_SMURF_SUCCESS';
 export const GET_SMURF_FAILURE = 'GET_SMURF_FAILURE';
 
 export const REMOVE_SMURF = 'REMOVE_SMURF';
+export const ADD_SMURF = 'ADD_SMURF';
 
 
 /*    Be sure to include action types for each type of action creator. Also, be sure to mind
@@ -46,5 +47,13 @@ export const removeSmurf = (smurfName) => {
   return {
       type: REMOVE_SMURF,
       payload: smurfName
+  }
+}
+
+
+export const addSmurf = (smurfObject) => {
+  return {
+      type: ADD_SMURF,
+      payload: smurfObject
   }
 }
