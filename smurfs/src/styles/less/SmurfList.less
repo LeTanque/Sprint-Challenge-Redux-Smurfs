@@ -1,0 +1,38 @@
+.smurf-list {
+    margin-top: 50px;
+    li {
+        width: 50%;
+        max-width: 400px;
+        font-size: 2rem;
+        font-weight: bold;
+        padding: 10px;
+        margin: 10px auto;
+        background-color: @green;
+        color: @white;
+        display: flex;
+        flex-direction: column;
+        .smurf-name {
+            margin-top: 10px;
+        }
+        .smurf-options {
+            margin-top: 10px;
+            font-size: 2.6rem;
+            .update-smurf {
+                color: @gray;
+                opacity: 0.5;
+                &:hover{
+                    opacity: 1;
+                    .transition(0.5s);
+                }
+            }
+            .remove-smurf {
+                color: @red;
+                opacity: 0.5;
+                &:hover{
+                    opacity: 1;
+                    .transition(0.5s);
+                }
+            }
+        }
+    }
+}
