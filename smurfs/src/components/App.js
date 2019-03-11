@@ -26,36 +26,35 @@ class App extends Component {
 
   componentDidMount() {
     this.props.getSmurfs();
-    this.setState({
-      smurfs: this.props.smurfs
-    })
     // this.setState({
-    //   ...this.props
+    //   smurfs: this.props.smurfs
     // })
   }
 
   render() {
-
-    // if (this.props.fetching) {
-    //   return (
-    //     <div className="App">
-    //       <header>
-
-            
-    //       </header>
-    //         <Loader type='Ball-Triangle' color='#0077cc' height='40%' weight='40%' />
-    //     </div>
-    //   )
-    // } else if (this.props.error) {
-    //   return (
-    //     <section className='logged-in-page-error'>
-    //         <Loader type='Ball-Triangle' color='#ff0000' height='40%' weight='40%' />
-    //         <code>{this.props.error}</code>
-    //     </section>
-    //   )
-    // }
+    
     console.log('App props:   ', this.props)
     console.log('App state:   ', this.state)
+
+    if (this.props.fetching) {
+      return (
+        <div className="App">
+          <header>
+
+            
+          </header>
+            <Loader type='Ball-Triangle' color='#0077cc' height='40%' weight='40%' />
+        </div>
+      )
+    } else if (this.props.error) {
+      return (
+        <section className='logged-in-page-error'>
+            <Loader type='Ball-Triangle' color='#ff0000' height='40%' weight='40%' />
+            <code>{this.props.error}</code>
+        </section>
+      )
+    }
+    
     return (
       <Fragment>
         <BrowserRouter>

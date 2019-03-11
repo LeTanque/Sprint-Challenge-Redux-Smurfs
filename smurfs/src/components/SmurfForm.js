@@ -15,15 +15,14 @@ class SmurfForm extends Component {
     }
   
 
-
   addSmurf = event => {
     event.preventDefault();
+    // this.setState({
+    //   name: '',
+    //   age: '',
+    //   height: ''
+    // });
     this.props.addSmurfPost(event, this.state)
-    this.setState({
-      name: '',
-      age: '',
-      height: ''
-    });
   }
 
   handleInputChange = event => {
@@ -75,6 +74,9 @@ class SmurfForm extends Component {
 const mapStateToProps = state => ({
     smurfs: state.smurfs,
     fetchingSmurfs: state.fetchingSmurfs,
+    addingSmurf: state.addingSmurf,
+    updatingSmurf: state.updatingSmurf,
+    deletingSmurf: state.deletingSmurf,
     error: state.error
 })
   

@@ -2,6 +2,7 @@ import {
   GET_SMURF_START,
   GET_SMURF_SUCCESS,
   GET_SMURF_FAILURE,
+  REMOVE_SMURF,
 } from '../actions';
 // Be sure to import in all of the action types from `../actions`
 // Reducers specify how the application's state changes in response to actions sent to the store.
@@ -36,6 +37,17 @@ const rootReducer = (state=initialState, action) => {
           fetchingSmurfs: false,
           error: action.payload,
         } 
+
+        case REMOVE_SMURF: // This reducer creates a new array with the correct filtered from payload tasks
+            const newSmurfArr = state.smurfs.filter(smurf => {
+                return smurf.name !== action.payload
+            })
+            return {
+                ...state,
+                smurfs: newSmurfArr
+                    
+            }
+
       default:
           return state;
   }

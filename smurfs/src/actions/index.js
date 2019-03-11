@@ -8,6 +8,8 @@ export const GET_SMURF_START = 'GET_SMURF_START';
 export const GET_SMURF_SUCCESS = 'GET_SMURF_SUCCESS';
 export const GET_SMURF_FAILURE = 'GET_SMURF_FAILURE';
 
+export const REMOVE_SMURF = 'REMOVE_SMURF';
+
 
 /*    Be sure to include action types for each type of action creator. Also, be sure to mind
       the "pending" states like, fetching, creating, updating and deleting.
@@ -39,3 +41,10 @@ export const getSmurfs = () => dispatch => {
       })
 }
 
+
+export const removeSmurf = (smurfName) => {
+  return {
+      type: REMOVE_SMURF,
+      payload: smurfName
+  }
+}

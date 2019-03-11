@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import { IoIosRemoveCircle, IoIosBuild } from 'react-icons/io';
+import { connect } from 'react-redux';
 
+import { removeSmurf } from '../actions';
 
 
 
@@ -9,6 +11,9 @@ class SmurfsList extends React.Component {
 
 
 
+    removeSmurf = (smurfName) => {
+        this.props.removeSmurf(smurfName);
+    }
 
 
     render () {
@@ -25,7 +30,10 @@ class SmurfsList extends React.Component {
                                         {smurf.name}
                                     </div>
                                     <div className='smurf-options'>
-                                        <span className='remove-smurf'><IoIosRemoveCircle /></span>
+                                    
+                                        <span className='remove-smurf'>
+                                            <IoIosRemoveCircle onClick={()=>this.removeSmurf(smurf.name)}/>    
+                                        </span>
                                         <span className='update-smurf'><IoIosBuild /></span>
                                     </div>
                                 </li>
@@ -40,4 +48,15 @@ class SmurfsList extends React.Component {
     }
 }
 
-export default SmurfsList
+
+
+const mapStateToProps = state => ({
+    ...state
+})
+  
+  
+export default connect(
+    mapStateToProps, 
+    { removeSmurf }
+)(SmurfsList);
+  
