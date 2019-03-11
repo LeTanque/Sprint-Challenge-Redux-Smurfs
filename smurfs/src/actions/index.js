@@ -8,6 +8,7 @@ export const GET_SMURF_START = 'GET_SMURF_START';
 export const GET_SMURF_SUCCESS = 'GET_SMURF_SUCCESS';
 export const GET_SMURF_FAILURE = 'GET_SMURF_FAILURE';
 
+export const REMOVE_SMURF_START = 'REMOVE_SMURF_START';
 export const REMOVE_SMURF = 'REMOVE_SMURF';
 export const REMOVE_SMURF_FAIL = 'REMOVE_SMURF_FAIL';
 
@@ -24,7 +25,7 @@ export const ADD_SMURF_FAIL = 'ADD_SMURF_FAIL';
 
 export const getSmurfs = () => dispatch => {
   dispatch({
-      type: GET_SMURF_START
+    type: GET_SMURF_START
   })
   axios
       .get('http://localhost:3333/smurfs')
@@ -43,11 +44,12 @@ export const getSmurfs = () => dispatch => {
       })
 }
 
-
-
 export const removeSmurf = (id) => dispatch => {
+  dispatch({
+    type: REMOVE_SMURF_START
+  })
   axios
-    .delete('http://localhost:3333/smurfs/', id)
+    .delete('http://localhost:3333/smurfs/'+id)
     .then(response => {
       dispatch({
         type: REMOVE_SMURF,
@@ -62,7 +64,6 @@ export const removeSmurf = (id) => dispatch => {
       })
     });
 }
-
 
 export const addSmurf = (smurfObject) => dispatch => {
   axios
@@ -80,10 +81,6 @@ export const addSmurf = (smurfObject) => dispatch => {
       })
     })
 }
-
-
-
-
 
 
 // export const removeSmurf = (smurfName) => {

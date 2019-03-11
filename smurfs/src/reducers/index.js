@@ -2,6 +2,7 @@ import {
   GET_SMURF_START,
   GET_SMURF_SUCCESS,
   GET_SMURF_FAILURE,
+  REMOVE_SMURF_START,
   REMOVE_SMURF,
   REMOVE_SMURF_FAIL,
   ADD_SMURF,
@@ -43,31 +44,39 @@ const rootReducer = (state=initialState, action) => {
           error: action.payload,
         } 
 
-      case REMOVE_SMURF: // This reducer creates a new array with the correct filtered from payload tasks
-        const newSmurfArr = state.smurfs.filter(smurf => {
-          return smurf !== action.payload
-        })
+      case REMOVE_SMURF_START:
         return {
           ...state,
-          smurfs: newSmurfArr,
+          deletingSmurf: true,
           error: null
         }
 
-    
+      case REMOVE_SMURF: // This reducer creates a new array with the correct filtered from payload tasks
+        // const newSmurfArr = state.smurfs.filter(smurf => {
+        //   return smurf.id !== action.payload
+        // })
+        return {
+          ...state,
+          smurfs: action.payload,
+          deletingSmurf: false,
+          error: null
+        }
+
       case REMOVE_SMURF_FAIL:
         return {
           ...state,
+          deletingSmurf: false,
           error: action.payload
         }
 
       case ADD_SMURF:
-        const newSmurf = { 
-          ...action.payload
-        }
-        const addSmurfArr = state.smurfs.concat(newSmurf)
+        // const newSmurf = { 
+        //   ...action.payload
+        // }
+        // const addSmurfArr = state.smurfs.concat(newSmurf)
         return {
-          // ...state,
-          smurfs: addSmurfArr,
+          ...state,
+          smurfs: action.payload,
           error: null
         }
       

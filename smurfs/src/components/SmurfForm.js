@@ -16,7 +16,7 @@ class SmurfForm extends Component {
     }
   
 
-  addSmurf = (event) => {
+  addSmurf = () => {
     this.setState({
       name: '',
       age: '',

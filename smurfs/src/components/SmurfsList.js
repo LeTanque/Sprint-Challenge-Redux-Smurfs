@@ -7,8 +7,8 @@ import { removeSmurf } from '../actions';
 
 class SmurfsList extends React.Component {
 
-    removeSmurf = (smurf) => {
-        this.props.removeSmurf(smurf);
+    removeSmurf = (id) => {
+        this.props.removeSmurf(id);
     }
 
     render () {

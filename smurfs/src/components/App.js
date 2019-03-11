@@ -38,20 +38,21 @@ class App extends Component {
 
     if (this.props.fetching) {
       return (
-        <div className="App">
-          <header>
-
-            
-          </header>
+        <Fragment>
+          <div className="App">
             <Loader type='Ball-Triangle' color='#0077cc' height='40%' weight='40%' />
-        </div>
+            <code>Loading...</code>
+          </div>
+        </Fragment>
       )
     } else if (this.props.error) {
       return (
-        <section className='logged-in-page-error'>
+        <Fragment>
+          <div className="App">
             <Loader type='Ball-Triangle' color='#ff0000' height='40%' weight='40%' />
             <code>{this.props.error}</code>
-        </section>
+          </div>
+        </Fragment>
       )
     }
     
